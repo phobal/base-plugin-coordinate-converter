@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom/client'
+import { useTranslation } from 'react-i18next'
 import { bitable, FieldType, INumberFieldMeta } from '@lark-base-open/js-sdk'
 import { Form, Button, Select, Row, Col, Radio } from 'antd'
+import './i18n/i18n'
 import gcoord from 'gcoord'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -28,6 +30,7 @@ type FormValues = {
 function LoadApp() {
   const [numberMetaList, setNumberMetaList] = useState<INumberFieldMeta[]>([])
   const [form] = Form.useForm()
+  const { t } = useTranslation()
 
   useEffect(() => {
     const fn = async () => {
@@ -67,17 +70,17 @@ function LoadApp() {
 
   return (
     <Form style={{ padding: 20 }} onFinish={onTransform}>
-      <p style={{ fontSize: 16, fontWeight: 600 }}>1. 选择需要转换的经、纬度字段</p>
+      <p style={{ fontSize: 16, fontWeight: 600 }}>{t('input.coordinates.desc')}</p>
       <Row justify="space-between" gutter={20}>
         <Col span={12}>
           <Form.Item
             required
-            label="经度"
+            label={t('input.coordinates.longitude')}
             name="inputLongitude"
             rules={[
               {
                 required: true,
-                message: '请选择经度字段',
+                message: t('placeholder.longitude'),
               },
             ]}
           >
@@ -88,11 +91,11 @@ function LoadApp() {
           <Form.Item
             required
             name={'inputLatitude'}
-            label="纬度"
+            label={t('input.coordinates.latitude')}
             rules={[
               {
                 required: true,
-                message: '请选择经度字段',
+                message: t('placeholder.latitude'),
               },
             ]}
           >
@@ -100,35 +103,35 @@ function LoadApp() {
           </Form.Item>
         </Col>
       </Row>
-      <p style={{ fontSize: 16, fontWeight: 600 }}>2. 经纬度数据来自哪里?</p>
+      <p style={{ fontSize: 16, fontWeight: 600 }}>{t('input.coordinates.from')}</p>
       <Form.Item
         name="mapType"
         required
         rules={[
           {
             required: true,
-            message: '请选择数据来源',
+            message: t('placeholder.from'),
           },
         ]}
       >
         <Radio.Group>
-          <Radio value="AMap">高德地图</Radio>
-          <Radio value="Baidu">百度地图</Radio>
-          <Radio value="QQ">腾讯地图</Radio>
-          <Radio value="Google">谷歌地图</Radio>
+          <Radio value="AMap">{t('from.gaode')}</Radio>
+          <Radio value="Baidu">{t('from.baidu')}</Radio>
+          <Radio value="QQ">{t('from.tencent')}</Radio>
+          <Radio value="Google">{t('from.google')}</Radio>
         </Radio.Group>
       </Form.Item>
-      <p style={{ fontSize: 16, fontWeight: 600 }}>3. 选择输出的经、纬度字段</p>
+      <p style={{ fontSize: 16, fontWeight: 600 }}>{t('input.coordinates.to')}</p>
       <Row justify="space-between" gutter={20}>
         <Col span={12}>
           <Form.Item
-            label="经度"
+            label={t('output.coordinates.longitude')}
             required
             name="outputLongitude"
             rules={[
               {
                 required: true,
-                message: '请选择经度字段',
+                message: t('placeholder.longitude'),
               },
             ]}
           >
@@ -137,13 +140,13 @@ function LoadApp() {
         </Col>
         <Col span={12}>
           <Form.Item
-            label="纬度"
+            label={t('output.coordinates.latitude')}
             name="outputLatitude"
             required
             rules={[
               {
                 required: true,
-                message: '请选择纬度字段',
+                message: t('placeholder.latitude')
               },
             ]}
           >
@@ -153,9 +156,9 @@ function LoadApp() {
       </Row>
       <Form.Item>
         <Button type="primary" htmlType="submit">
-          转换
+          {t('btn.translate')}
         </Button>
-        <p>这里输出的坐标系为 WGS84</p>
+        <p>{t('btn.desc')}</p>
       </Form.Item>
     </Form>
   )
