@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client'
 import { useTranslation } from 'react-i18next'
 import { bitable, FieldType, INumberFieldMeta } from '@lark-base-open/js-sdk'
 import { ConfigProvider, Form, Button, Select, Row, Col, Radio } from 'antd'
+import gcoord from 'gcoord'
 import { useTheme, useAntdLocale } from './hooks'
 import './i18n/i18n'
-import gcoord from 'gcoord'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
