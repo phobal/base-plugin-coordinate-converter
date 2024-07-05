@@ -644,6 +644,11 @@ csstype@^3.0.10, csstype@^3.0.2:
   resolved "https://registry.npmmirror.com/csstype/-/csstype-3.1.2.tgz#1d4bf9d572f11c14031f0436e1c10bc1f571f50b"
   integrity sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==
 
+darkreader@^4.9.87:
+  version "4.9.87"
+  resolved "https://registry.yarnpkg.com/darkreader/-/darkreader-4.9.87.tgz#d43c88177aee19c4790269b1c1b5827d22d05715"
+  integrity sha512-fPlKHpXqbtVTDD/rTtRxyr5OnGj2oLvIy6J2dhkN0cNPi9u27uz43UEx0VaHlO6+q9trIEbL41Bq309nR2yxkQ==
+
 dayjs@^1.11.1:
   version "1.11.9"
   resolved "https://registry.npmmirror.com/dayjs/-/dayjs-1.11.9.tgz#9ca491933fadd0a60a2c19f6c237c03517d71d1a"

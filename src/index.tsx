@@ -2,15 +2,26 @@ import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import { useTranslation } from 'react-i18next'
 import { bitable, FieldType, INumberFieldMeta } from '@lark-base-open/js-sdk'
-import { Form, Button, Select, Row, Col, Radio } from 'antd'
+import { ConfigProvider, Form, Button, Select, Row, Col, Radio } from 'antd'
+import { useTheme, useAntdLocale } from './hooks'
 import './i18n/i18n'
 import gcoord from 'gcoord'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <LoadApp />
+    <App />
   </React.StrictMode>
 )
+
+function App() {
+  useTheme()
+  const { locale } = useAntdLocale()
+  return (
+    <ConfigProvider locale={locale}>
+      <LoadApp />
+    </ConfigProvider>
+  )
+}
 
 const mapTypeMapping = {
   AMap: gcoord.AMap,
